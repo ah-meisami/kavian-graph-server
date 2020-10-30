@@ -5,7 +5,6 @@ Using the <a href="https://jsao.io/2017/06/how-to-get-use-and-close-a-db-connect
 for testing:
 <br/>
 1.run this in command line: nodemon.cmd .\src\get-graph-from-db\index.js
-
 <br/>
 2.run this in web browser: <a href="http://127.0.0.1:3000/getData">http://127.0.0.1:3000/getData</a>
 
