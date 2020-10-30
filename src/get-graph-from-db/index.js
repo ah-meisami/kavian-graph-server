@@ -1,3 +1,4 @@
+const cors = require('cors');
 const oracledb = require('oracledb');
 const dbConfig = require('./db-config.js');
 const graphData = require('./graph-data.js');
@@ -7,6 +8,7 @@ const graphNode = require('./graph-node.js');
 var express = require('express');
 var app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/getData', function (req, res, next) {
