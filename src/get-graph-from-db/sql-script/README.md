@@ -1,0 +1,1 @@
+initiate oracle schema with thease scripts
