@@ -8,6 +8,6 @@ for testing:
 <br/>
 2.run this in web browser: <a href="http://127.0.0.1:3000/getData">http://127.0.0.1:3000/getData</a>
 <br/>
-3.run this in web browser: <a href="http://127.0.0.1:3000/getNode?accNo=0201894993002">http://127.0.0.1:3000/getNode?accNo=0201894993002</a>\
+3.run this in web browser: <a href="http://127.0.0.1:3000/getNode?accNo=0201894993002">http://127.0.0.1:3000/getNode?accNo=0201894993002</a>
 <br/>
 4.run this in web browser: <a href="http://127.0.0.1:3000/getEdge?accNo=0201894993002">http://127.0.0.1:3000/getEdge?accNo=0201894993002</a>
