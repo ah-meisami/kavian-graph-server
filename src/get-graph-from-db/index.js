@@ -63,9 +63,9 @@ app.get('/getEdge', function (req, res, next) {
   .then(function(result) {
     result.rows.map(row => {
       let new_edge = {
-        edge_id: row.EDGE_ID,
-        node_from_id: row.NODE_FROM_ID,
-        node_to_id: row.NODE_TO_ID,
+        id: row.EDGE_ID,
+        from: row.NODE_FROM_ID,
+        to: row.NODE_TO_ID,
         node_from_acct: row.NODE_FROM_ACCT,
         node_to_acct: row.NODE_TO_ACCT,
         edge_attr_trn_cd: row.EDGE_ATTR_TRN_CD,
