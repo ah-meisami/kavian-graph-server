@@ -12,7 +12,7 @@ function getData() {
         conn = c;
 
         return conn.execute(
-          `select acct_src accNo, count(*) No from atm.graph_data group by acct_src having count(*)>10 order by count(*) desc`
+          `select acct_src accNo, count(*) No from atm.graph_data group by acct_src having count(*) between 100 and 150 order by count(*) asc`
           ,
           [],
           {
