@@ -17,7 +17,7 @@ app.get('/getData', function (req, res, next) {
     return graphData.getData();
   })
   .then(function(result) {
-    res.json(result);
+    res.json(result.rows);
     console.log('result.metaData',result.metaData);
     console.log('result.rows',result.rows);
     console.log('result.rows.length',Object.keys(result.rows).length);
