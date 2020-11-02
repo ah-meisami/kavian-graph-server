@@ -17,7 +17,13 @@ for testing:
 issue: ORA-12516
 <a href="https://github.com/oracle/node-oracledb/issues/605">https://github.com/oracle/node-oracledb/issues/605</a>
 SQL> show parameter processes
-SQL> alter system set processes=1000 scope=spfile;
-SQL> alter system set sessions=1000 scope=spfile;
+SQL> alter system set processes=150 scope=spfile;
+SQL> alter system set sessions=150 scope=spfile;
 SQL> shutdown immediate
 SQL> startup
+
+
+<br/>
+<hr/>
+issue: create connection pool
+<a href="https://github.com/oracle/node-oracledb/issues/600">https://github.com/oracle/node-oracledb/issues/600</a>
