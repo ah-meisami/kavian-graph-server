@@ -7,6 +7,12 @@ var app = express();
 app.use(cors());
 app.use(express.json());
 
+
+// var bodyParser = require('body-parser');
+// app.use(bodyParser.json()); // support json encoded bodies
+// app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
 app.get('/getData', function(req, res, next) {
 	connectionpool.getData()
 		.then(function(result) {
@@ -67,6 +73,26 @@ app.get('/getEdge', function(req, res, next) {
 		.catch(function(err) {
 			console.log(err);
 		});
+});
+
+app.get('/getOption', function(req, res, next) {
+	connectionpool.getOption()
+		.then(function (result) {
+			res.setHeader('Content-Type', 'application/json'); //use this because the output itself is in json format for options
+			res.end(result.rows[0][0]);
+			// console.log('result.metaData',result.metaData);
+			// console.log('result.rows',result.rows);
+			console.log(`/getOption - num of rows:', ${Object.keys(result.rows).length}`);
+		})
+		.catch(function(err) {
+			console.log(err);
+		});
+});
+
+app.post('/postOption', function (req, res) {
+	let option = req.body;
+	connectionpool.postOption(option);
+	res.send(option);
 });
 
 const PORT = process.env.PORT || 30;

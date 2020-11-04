@@ -149,7 +149,13 @@ module.exports.getData = async function getData() {
 			.then(function(c) {
 				// console.log('Connected to database');
 				connection = c;
-				const sql = `select acct_src accNo, count(*) No from atm.graph_data group by acct_src having count(*) between 100 and 150 order by count(*) asc`;
+				const sql = `select
+												acct_src accNo,
+												count(*) No
+											from atm.graph_data
+											group by acct_src
+											having count(*) between 200 and 250
+											order by count(*) asc`;
 				const binds = [];
 				const options = { outFormat: oracledb.OUT_FORMAT_OBJECT };
 				return connection.execute(sql, binds, options);
@@ -258,6 +264,97 @@ module.exports.getEdge = async function getEdge(accNo) {
                       order by d.id`;
 				const binds = [accNo];
 				const options = { outFormat: oracledb.OUT_FORMAT_OBJECT };
+				return connection.execute(sql, binds, options);
+			})
+			.then(
+				function(result) {
+					// console.log('Query executed');
+					resolve(result);
+				},
+				function(err) {
+					console.log('Error occurred', err);
+					reject(err);
+				}
+			)
+			.then(function() {
+				if (connection) {
+					// If connection assignment worked, need to close.
+					return connection.close();
+				}
+			})
+			.then(function() {
+				console.log('Connection closed');
+			})
+			.catch(function(err) {
+				// If error during close, just log.
+				console.log('Error closing connection', err);
+			});
+	});
+};
+
+/**
+ * Author: ah_meisami
+ * Date: 2020-11-04
+*/
+module.exports.getOption = async function getOption() {
+	return new Promise(function(resolve, reject) {
+		let connection; // Declared here for scoping purposes.
+    const pool = oracledb.getPool(dbConfig.poolAlias);
+		console.log(`${dbConfig._enableStats ? pool._logStats() : ''}`);
+		pool
+			.getConnection()
+			.then(function(c) {
+				// console.log('Connected to database');
+				connection = c;
+				const sql = `select option_doc, max(date_created) from atm.graph_option  group by option_doc order by 1 desc`;
+				const binds = [];
+				const options = { outFormat: oracledb.OUT_FORMAT_ARRAY }; //use this because the output itself is in json format for options
+				return connection.execute(sql, binds, options);
+			})
+			.then(
+				function(result) {
+					// console.log('Query executed');
+					resolve(result);
+				},
+				function(err) {
+					console.log('Error occurred', err);
+					reject(err);
+				}
+			)
+			.then(function() {
+				if (connection) {
+					// If connection assignment worked, need to close.
+					return connection.close();
+				}
+			})
+			.then(function() {
+				console.log('Connection closed');
+			})
+			.catch(function(err) {
+				// If error during close, just log.
+				console.log('Error closing connection', err);
+			});
+	});
+};
+
+/**
+ * Author: ah_meisami
+ * Date: 2020-11-04
+*/
+module.exports.postOption = async function postOption (option_doc) {
+	return new Promise(function(resolve, reject) {
+		let connection; // Declared here for scoping purposes.
+    const pool = oracledb.getPool(dbConfig.poolAlias);
+		console.log(`${dbConfig._enableStats ? pool._logStats() : ''}`);
+		pool
+			.getConnection()
+			.then(function(c) {
+				// console.log('Connected to database');
+				connection = c;
+				const sql = `insert into atm.graph_option(option_doc) values ('${JSON.stringify(option_doc)}')`;
+				console.log(sql)
+				const binds = [];
+				const options = { outFormat: oracledb.OUT_FORMAT_ARRAY }; //use this because the output itself is in json format for options
 				return connection.execute(sql, binds, options);
 			})
 			.then(
