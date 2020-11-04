@@ -192,7 +192,7 @@ INSERT INTO atm.GRAPH_OPTION(option_doc) VALUES(
 	},
 	nodes: {
 		font: {
-			face: 'Vazir'
+			face: "Vazir"
 		},
 		borderWidth: 2
 	}
