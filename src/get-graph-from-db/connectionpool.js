@@ -306,7 +306,7 @@ module.exports.getOption = async function getOption() {
 			.then(function(c) {
 				// console.log('Connected to database');
 				connection = c;
-				const sql = `select option_doc, max(date_created) from atm.graph_option  group by option_doc order by 1 desc`;
+				const sql = `select option_doc from atm.graph_option order by id desc`;
 				const binds = [];
 				const options = { outFormat: oracledb.OUT_FORMAT_ARRAY }; //use this because the output itself is in json format for options
 				return connection.execute(sql, binds, options);
