@@ -169,32 +169,32 @@ create table atm.GRAPH_OPTION (
 
 INSERT INTO atm.GRAPH_OPTION(option_doc) VALUES(
 '{
-	physics: {
-		enabled: false
+	"physics": {
+		"enabled": false
 	},
-	nodes: {
-		shape: "dot",
-		size: 15,
-		color: "#ECBF26",
-		font: {
-			size: 16,
-			color: "#ffffff",
-			face: "Vazir"
+	"nodes": {
+		"shape": "dot",
+		"size": 15,
+		"color": "#ECBF26",
+		"font": {
+			"size": 16,
+			"color": "#ffffff",
+			"face": "Vazir"
 		},
-		borderWidth: 2
+		"borderWidth": 2
 	}
 }');
 
 INSERT INTO atm.GRAPH_OPTION(option_doc) VALUES(
 '{
-	physics: {
-		enabled: false
+	"physics": {
+		"enabled": false
 	},
-	nodes: {
-		font: {
-			face: "Vazir"
+	"nodes": {
+		"font": {
+			"face": "Vazir"
 		},
-		borderWidth: 2
+		"borderWidth": 2
 	}
 }');
 
