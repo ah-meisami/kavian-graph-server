@@ -352,9 +352,9 @@ module.exports.postOption = async function postOption (option_doc) {
 				// console.log('Connected to database');
 				connection = c;
 				const sql = `insert into atm.graph_option(option_doc) values ('${JSON.stringify(option_doc)}')`;
-				console.log(sql)
+				console.log(`sql = ${sql}`);
 				const binds = [];
-				const options = { outFormat: oracledb.OUT_FORMAT_ARRAY }; //use this because the output itself is in json format for options
+				const options = { autoCommit: true };
 				return connection.execute(sql, binds, options);
 			})
 			.then(
