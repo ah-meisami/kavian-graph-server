@@ -13,6 +13,8 @@ app.use(express.json());
 // app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
+const parseJson = require('parse-json');
+
 app.get('/getData', function(req, res, next) {
 	connectionpool.getData()
 		.then(function(result) {
@@ -78,6 +80,7 @@ app.get('/getEdge', function(req, res, next) {
 app.get('/getOption', function(req, res, next) {
 	connectionpool.getOption()
 		.then(function (result) {
+			parseJson(result.rows[0][0]);
 			res.setHeader('Content-Type', 'application/json'); //use this because the output itself is in json format for options
 			res.end(result.rows[0][0]);
 			// console.log('result.metaData',result.metaData);
